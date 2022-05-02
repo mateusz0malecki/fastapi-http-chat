@@ -1,0 +1,9 @@
+uvicorn
+fastapi
+pika
+passlib[bcrypt]
+alembic
+sqlalchemy
+psycopg2
+python-multipart
+python-jose[cryptography]
