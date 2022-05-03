@@ -1,10 +1,12 @@
+import uuid
 from .database import Base
-from sqlalchemy import Integer, String, Text, Column
+from sqlalchemy import String, Text, Column
+from sqlalchemy.dialects.postgresql import UUID
 
 
 class User(Base):
     __tablename__ = "users"
-    user_id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     username = Column(String(25), unique=True)
     password = Column(Text)
 
@@ -24,5 +26,3 @@ class User(Base):
     def check_if_user_exists(db, user_name):
         if db.query(User).filter(User.username == user_name).first():
             return True
-        else:
-            return False

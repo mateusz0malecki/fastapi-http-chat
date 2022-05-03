@@ -29,7 +29,7 @@ def new_user(request: schemas.NewUser, db: Session = Depends(get_db)):
 
 
 @router.delete("/{user_id}")
-def delete_user(user_id: int, db: Session = Depends(get_db)):
+def delete_user(user_id: str, db: Session = Depends(get_db)):
     user_to_delete = models.User.get_user_by_id(db, user_id)
     if not user_to_delete.first():
         raise HTTPException(

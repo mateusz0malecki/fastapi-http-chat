@@ -7,7 +7,7 @@ from routes.auth import get_current_user
 
 router = APIRouter(prefix="/messages", tags=["Messages"])
 
-pika_client = PikaClient(host="rabbitmqhost")
+pika_client = PikaClient(host="rabbitmq")
 
 
 @router.get("/{user_name}/{sender}", status_code=status.HTTP_200_OK)
